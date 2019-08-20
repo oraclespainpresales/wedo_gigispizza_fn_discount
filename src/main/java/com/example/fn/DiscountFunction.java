@@ -3,41 +3,35 @@ package com.example.fn;
 public class DiscountFunction {
 
     public String handleRequest(String input) {
-        String name = (input == null || input.isEmpty()) ? "world"  : input;
         //min 10$ to initialize discounts
-        String totalPayedParam = (input == null || input.isEmpty()) ? "10"  : input;
+        String totalPaidParam = (input == null || input.isEmpty()) ? "10"  : input;
 
-        int discountApplied = 0;
-        
+        double discountApplied = 0;
+
         //cast string input into a float
-        System.out.println("inside Discount Function helloword fn function!!! ");
-	    int totalPayedValue = Integer.parseInt(totalPayedParam);			
+        System.out.println("inside Discount Function gigis fn function!!! ");
+        double totalPaidValue = Double.parseDouble(totalPaidParam);
 
-        System.out.println("totalPayedValue before discount :" + totalPayedValue);
+        System.out.println("totalPaidValue before discount :" + totalPaidValue);
 
-        if  ((totalPayedValue > 10) && (totalPayedValue <= 20)){
-            discountApplied = 2;
+        if  ((totalPaidValue > 10) && (totalPaidValue <= 15)){
+            discountApplied = 0.02;
+        } else if  ((totalPaidValue > 15) && (totalPaidValue <= 20)){
+            discountApplied = 0.05;
+        } else if  ((totalPaidValue > 20)){
+            discountApplied = 0.07;
         };
 
-        if  ((totalPayedValue > 20) && (totalPayedValue <= 30)){
-            discountApplied = 5;
-        };
-
-        if  ((totalPayedValue > 30)){
-            discountApplied = 9;
-        };
         //apply calculation to float eg: discount = 10%
-        System.out.println("discountApplied :" + discountApplied + "$");
+        System.out.println("discountApplied : " + (discountApplied*100) + "%");
 
-	    totalPayedValue = (totalPayedValue - discountApplied);	
-        System.out.println("totalPayedValue after discount :" + totalPayedValue + "$");		
+        totalPaidValue -= (totalPaidValue*discountApplied);
+        System.out.println("totalValue after discount :" + totalPaidValue + "$");
 
-        String totalPayedValueToReturn = Integer.toString(totalPayedValue);
+        String totalPaidValueToReturn = Double.toString(totalPaidValue);
 
         //return string
-        System.out.println("leaving Java helloword fn function!!! ");
-        return totalPayedValueToReturn;
+        System.out.println("leaving Java Discount Function gigis fn function!!! ");
+        return totalPaidValueToReturn;
     }
-
-
 }
